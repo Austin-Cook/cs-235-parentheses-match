@@ -47,7 +47,10 @@ int main(int argc, char* argv[]) {
             charStack.push(userString.at(stringIndex));
         }
         else if (IsClose(userString.at(stringIndex))) {
-            if(AreMatched(charStack.top(), userString.at(stringIndex))) {
+            if(charStack.size() == 0) {
+                balanced = false;
+            }
+            else if(AreMatched(charStack.top(), userString.at(stringIndex))) {
                 charStack.pop();
             }
             else {
@@ -58,10 +61,8 @@ int main(int argc, char* argv[]) {
 
         if(!charStack.empty()) {
             balanced = false;
-            //std::cout << std::endl << "The stack is NOT empty"; //DELETEME
         }
         else {
-            //std::cout << std::endl << "The stack IS empty"; //DELETEME
         }
 
     if(balanced) {
